@@ -7,13 +7,13 @@ Python codes for simultion of  Dynamic Serverless Pricing (DSP) model leveraging
 
 - **src/**: Contains the source code for the DSP model.
 - **data/**: Includes datasets used for the experiments.
-- **results/**: Contains the results of our experiments and evaluations.
 - **README.md**: Overview of the project and instructions.
 
 
 ## License
 
 This project is licensed under the MIT License .
+This project uses Azure Functions Invocation Trace 2021 from https://github.com/Azure/AzurePublicDataset/blob/master/AzureFunctionsInvocationTrace2021.md
 
 ## Contact
 
