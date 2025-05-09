@@ -73,7 +73,7 @@ def sum_clients_utility_for_lambda_mu(Mu, Lambda):
             #δ_u
             Delta_u = ((Delta_List[hour])[provider]) 
             utility = client_utility(Delta_u, Lambda, Phi)
-            if utility>0 :
+            if utility>0 and Delta_u > 0:
                 s_utility += utility
     #print("Mu=" , Mu , ",Lambda =" ,Lambda , "s_utility" , s_utility)        
     return s_utility;    
@@ -101,16 +101,17 @@ ax1.plot_surface(Mu_Grid, Lambda_Grid, provider_results, cmap='viridis' )
 
 ax1.set_xlabel('μ')
 ax1.set_ylabel('λ')
-ax1.set_zlabel('θ_s')
-ax1.set_title('Provider utility')
+ax1.set_zlabel('Utility function (θ)')
 
 #client plot
 ax2 = fig.add_subplot(122, projection='3d')
-ax2.plot_surface(Mu_Grid, Lambda_Grid, clients_results, cmap='viridis' ,label='Clients utility')
+ax2.plot_surface(Mu_Grid, Lambda_Grid, clients_results, cmap='viridis' ,label='Developers utility function')
 
 ax2.set_xlabel('μ')
 ax2.set_ylabel('λ')
-ax2.set_zlabel('θ_u')
-ax2.set_title('Clients utility')
+ax2.set_zlabel('Utility function (θ)')
+
+ax1.set_title('Serverless Provider Utility (Azure Functions 2021 Trace)')
+ax2.set_title('Developers Utility Function (Azure Functions 2021 Trace)')
 plt.tight_layout()
 plt.show()
