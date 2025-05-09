@@ -24,7 +24,7 @@ def optimal_consumption(Lambda_u, Phi):
     return max((Lambda_u / Phi) - 1, 0)
 
 
-
+# Mu ranges from 6 to 16.6667, validated against Azure Functions 2021 Trace invocation patterns
 # Simulation parameters
 simulation_duration = 24        # 24 hours
 number_of_providers = 10        # Number of clients
@@ -63,10 +63,10 @@ for Mu_w in range(11):
         
     
 
+plt.plot(Mu_list, provider_utility_list, marker='x', label='Serverless utility function θ (Azure Functions 2021 Trace)')
 
-plt.plot(Mu_list, provider_utility_list ,marker='x', label='θ_s')
 plt.xlabel('μ')
-plt.ylabel('θ_s')
+plt.ylabel('Serverless utility function(θ)')
 
 plt.xticks(Mu_list)
 plt.legend()
