@@ -79,8 +79,8 @@ def sum_clients_utility_for_hour(Mu, hour):
         Delta_u = ((Delta_List[hour])[provider]) 
         #Delta_u, Lambda_u, Phi    
         utility =  client_utility(Delta_u, Lambda, Phi)
-        print(utility)
-        if utility>0 :
+        #print(utility)
+        if utility>0 and Delta_u > 0:
                 s_utility += utility
     #print("Mu=" , Mu , ",Lambda =" ,Lambda , "s_utility" , s_utility)        
     return s_utility;
@@ -91,7 +91,7 @@ um_values = np.arange(6, 8.2, 0.2)
 
 hours = np.arange(24)
 
-print (hours)
+#print (hours)
 
 Mu_Grid, Hours_Grid = np.meshgrid(um_values, hours)
 
@@ -112,18 +112,20 @@ ax1.plot_surface(Mu_Grid, Hours_Grid, provider_results, cmap='viridis' )
 
 ax1.set_xlabel('μ')
 ax1.set_ylabel('hour')
-ax1.set_zlabel('θ_s')
-ax1.set_title('Provider utility')
+ax1.set_zlabel('θ')
 
 #client plot
 ax2 = fig.add_subplot(122, projection='3d')
-ax2.plot_surface(Mu_Grid, Hours_Grid, clients_results, cmap='viridis' ,label='Clients utility')
+ax2.plot_surface(Mu_Grid, Hours_Grid, clients_results, cmap='viridis' ,label='Developers utility function')
 
 ax2.set_xlabel('μ')
 ax2.set_ylabel('hour')
-ax2.set_zlabel('θ_u')
-ax2.set_title('Clients utility')
+ax2.set_zlabel('θ')
+ax1.set_title('Serverless Provider Utility (Azure Functions 2021 Trace)')
+ax2.set_title('Developers Utility Function (Azure Functions 2021 Trace)')
 plt.tight_layout()
+
+
 
 
 plt.show()
